@@ -33,7 +33,6 @@ jobs:
         with:
           image: jacoblmcallister/hangman
           tags: v1, latest
-          registry: Docker.io
-          dockerfile: Dockerfile.ci
+          registry: docker.io
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
