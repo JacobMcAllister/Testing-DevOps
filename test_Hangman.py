@@ -57,7 +57,7 @@ class TestHangman(unittest.TestCase):
         test = Hangman.getRandomWord(test_list)
         self.assertIn(test, test_list)
     
-    @patch('builtins.input', side_effect=['s', 'e', 'c', 'r', 'e','t', 'y', 's', 'e', 'c', 'r', 'e','t', 'n', 'a', 'b', 'c', 'd', 'e', 'f', 'g','h', 'i', 'j', 'k', 'i', 'm'])
+    @patch('builtins.input', side_effect=['s', 'e', 'c', 'r', 'e','t', 'y', 's', 'e', 'c', 'r', 'e','t', 'n', 'a', 'b', 'c', 'd', 'e', 'f', 'g','h', 'i', 'j', 'k', 'i', 'm', 'n','o', 'p', 'q', 'r', 's','t','u'])
     def test_MainDriver(self, mock_input):
         Hangman.main('secret')
         Hangman.main('secret')
