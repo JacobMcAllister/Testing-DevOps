@@ -1,7 +1,7 @@
 FROM python:3.8
 
 # set a directory for the app
-WORKDIR C:\Users\Mcall\OneDrive\Documents\GitHub\class-activity4-mcallister-facque
+WORKDIR C:\Users\Mcall\OneDrive\Documents\GitHub\Testing-DevOps
 
 # copy all the files to the container
 COPY . .
