@@ -1,4 +1,5 @@
 import random
+from Player import Player
 
 HANGMAN_PICS = ['''
     +---+
@@ -82,12 +83,24 @@ def playAgain():
     print('Do you want to play again? (yes or no)')
     return input().lower().startswith('y')
 
+#def findPlayer():
+    
+    #nothing
+
 def main(word):
     print('H A N G M A N')
     missedLetters = ''
     correctLetters = ''
     secretWord = word
     gameIsDone = False
+
+    #print("Enter player name")
+    #player = findPlayer(input())
+    player = Player("Jake")
+    print(player.name)
+    print(player.score)
+    player.updateScore()
+    player.displayPlayer()
 
     while True:
         displayBoard(missedLetters, correctLetters, secretWord)
