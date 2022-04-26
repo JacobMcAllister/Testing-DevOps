@@ -61,7 +61,9 @@ class TestHangman(unittest.TestCase):
     def test_MainDriver(self, mock_input):
         with self.assertRaises(SystemExit) as cm:
             Hangman.main('secret')
+            Hangman.main('secret')
         self.assertEqual(cm.exception.code, 0)
+        
         with self.assertRaises(SystemExit) as cm:
             Hangman.main('secret')
         self.assertEqual(cm.exception.code, 0)     
