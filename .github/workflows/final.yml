@@ -21,7 +21,7 @@ jobs:
           python -m pip install --upgrade pip
       - name: Install dependencies
         run: |
-          python install coverage
+          python pip install coverage
       - name: Install dependencies
         run: |
           coverage run -m unittest discover
