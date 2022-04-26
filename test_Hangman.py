@@ -62,5 +62,6 @@ class TestHangman(unittest.TestCase):
         with self.assertRaises(SystemExit) as cm:
             Hangman.main('secret')
         self.assertEqual(cm.exception.code, 0)
-        
-        Hangman.main('secret')
+        with self.assertRaises(SystemExit) as cm:
+            Hangman.main('secret')
+        self.assertEqual(cm.exception.code, 0)     
