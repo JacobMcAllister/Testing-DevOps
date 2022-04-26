@@ -59,5 +59,8 @@ class TestHangman(unittest.TestCase):
     
     @patch('builtins.input', side_effect=['s', 'e', 'c', 'r', 'e','t', 'y', 's', 'e', 'c', 'r', 'e','t', 'n', 'a', 'b', 'c', 'd', 'e', 'f', 'g','h', 'i', 'j', 'k', 'i', 'm', 'n','o', 'p', 'q', 'r', 's','t','u'])
     def test_MainDriver(self, mock_input):
-        Hangman.main('secret')
+        with self.assertRaises(SystemExit) as cm:
+            Hangman.main('secret')
+        self.assertEqual(cm.exception.code, 0)
+        
         Hangman.main('secret')
