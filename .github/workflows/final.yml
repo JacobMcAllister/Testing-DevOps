@@ -1,16 +1,24 @@
-name: Greetings
+name: Python package
 
-on: [pull_request_target, issues]
+on: [push]
 
 jobs:
-  greeting:
+  build:
+
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
-      pull-requests: write
+    strategy:
+      matrix:
+        python-version: ["3.8"]
+
     steps:
-    - uses: actions/first-interaction@v1
-      with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        issue-message: 'Message that will be displayed on users first issue'
-        pr-message: 'Message that will be displayed on users first pull request'
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+      - name: Test with Unittest
+        run: |
+          python3 test_Hangman.py
