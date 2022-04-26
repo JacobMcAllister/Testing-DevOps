@@ -84,7 +84,7 @@ def playAgain():
     return input().lower().startswith('y')
 
 def main(word):
-    print('H A N G M A N')
+    print('H A N G M A N TEST')
     missedLetters = ''
     correctLetters = ''
     secretWord = word
