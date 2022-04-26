@@ -60,4 +60,4 @@ class TestHangman(unittest.TestCase):
     @patch('builtins.input', side_effect=['s', 'e', 'c', 'r', 'e','t', 'y', 's', 'e', 'c', 'r', 'e','t', 'n', 'a', 'b', 'c', 'd', 'e', 'f', 'g','h', 'i', 'j', 'k'])
     def test_MainDriver(self, mock_input):
         Hangman.main('secret')
-        Hangman.Main('secret')
+        Hangman.main('secret')
