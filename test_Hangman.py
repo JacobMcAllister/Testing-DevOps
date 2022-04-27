@@ -91,7 +91,7 @@ class TestHangman(unittest.TestCase):
         testFile = Path("." + "/" + "players" + "/" + "findPlayerCreateFile" + ".txt")
         #testFile.touch(exist_ok=True)
 
-        with open(testFile, 'w') as f:
+        with open(os.path.join("." + "/" + "players" + "/","findPlayerCreateFile" + ".txt"), 'w') as f:
                 f.writelines("findPlayerCreateFile"+"\n")
                 f.writelines("12\n")
                 f.close()
