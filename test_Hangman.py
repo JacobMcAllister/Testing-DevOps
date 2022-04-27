@@ -2,9 +2,13 @@
 import unittest
 import io
 import sys
+import os
+
 from unittest.mock import patch
+from pathlib import Path
 
 import Hangman
+from Player import Player
 
 class TestHangman(unittest.TestCase):
     
@@ -20,6 +24,11 @@ class TestHangman(unittest.TestCase):
         print('setUp')
 
     def tearDown(self):
+        testFile = Path("." + "/" + "players" + "/" + "findPlayerCreateFile" + ".txt")
+
+        if os.path.exists(testFile):
+            print('testFile Removed')
+            os.remove(testFile)  
         print('tearDown\n')
 
     def test_PrintBoard(self):
@@ -57,7 +66,67 @@ class TestHangman(unittest.TestCase):
         test = Hangman.getRandomWord(test_list)
         self.assertIn(test, test_list)
     
-    @patch('builtins.input', side_effect=['s', 'e', 'c', 'r', 't', 'n'])
+    @patch('builtins.input', side_effect=['Jake','s', 'e', 'c', 'r', 't', 'n'])
     def test_MainDriver(self, mock_input):
         Hangman.main('secret')
+
+    def test_findPlayerDefault(self):
+        test = Hangman.findPlayer("")
+        default = Player()
+
+        self.assertEqual(test.name, "Player")
+        self.assertEqual(default.name, "Player")
+
+    def test_findPlayerCreateFile(self):
+        testFile = Path("." + "/" + "players" + "/" + "findPlayerCreateFile" + ".txt")
+        if os.path.exists(testFile):
+            os.remove(testFile)
+        testPlayer = Hangman.findPlayer("findPlayerCreateFile")
+
+        assert os.path.isfile(testFile)
+        self.assertEqual(testPlayer.name, "findPlayerCreateFile")
+        self.assertEqual(testPlayer.score, 0)
+
+    def test_findPlayerExistFile(self):
+        testFile = Path("." + "/" + "players" + "/" + "findPlayerCreateFile" + ".txt")
+        testFile.touch(exist_ok=True)
+        with open(testFile, "r+") as f:
+                f.writelines("findPlayerCreateFile"+"\n")
+                f.writelines("12\n")
+
+        assert os.path.isfile(testFile)
+
+        testPlayer = Hangman.findPlayer("findPlayerCreateFile")
+
+        self.assertEqual(testPlayer.name, "findPlayerCreateFile")
+        self.assertEqual(testPlayer.score, 12)
+            
+    def test_updateScoreToClass(self):
+        testFile = Path("." + "/" + "players" + "/" + "findPlayerCreateFile" + ".txt")
+
+        testPlayer = Hangman.findPlayer("findPlayerCreateFile")
+        assert os.path.isfile(testFile)
+
+        testPlayer.score = 22
         
+        self.assertEqual(testPlayer.name, "findPlayerCreateFile")
+        self.assertEqual(testPlayer.score, 22)
+
+        testPlayer.updateScore()
+
+        self.assertEqual(testPlayer.score, 23)
+  
+    def test_updateScoreToFile(self):
+        testFile = Path("." + "/" + "players" + "/" + "findPlayerCreateFile" + ".txt")
+
+        testPlayer = Hangman.findPlayer("findPlayerCreateFile")
+        assert os.path.isfile(testFile)
+
+        self.assertEqual(testPlayer.score, 0)
+
+        testPlayer.updateScore()
+
+        self.assertEqual(testPlayer.name, "findPlayerCreateFile")
+        self.assertEqual(testPlayer.score, 1)
+
+

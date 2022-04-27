@@ -83,25 +83,31 @@ def playAgain():
     print('Do you want to play again? (yes or no)')
     return input().lower().startswith('y')
 
-#def findPlayer():
-    
-    #nothing
+def findPlayer(name):
+    try:
+        return Player(name)
+    except:
+      print("An exception occurred")
 
+def choice():
+    print('Do you want to see the player list first? (yes or no)')
+    if input().lower().startswith('y'):
+        Player.listPlayers()
+
+  
 def main(word):
-    print('H A N G M A N')
+    print('T H E  G A M E  O F  H A N G M A N')
     missedLetters = ''
     correctLetters = ''
     secretWord = word
     gameIsDone = False
 
-    #print("Enter player name")
-    #player = findPlayer(input())
-    player = Player("Jake")
-    print(player.name)
-    print(player.score)
-    player.updateScore()
-    player.displayPlayer()
+    choice()
 
+    print("Enter player name")
+    player = findPlayer(input())
+    player.displayPlayer()
+    Player.listPlayers()
     while True:
         displayBoard(missedLetters, correctLetters, secretWord)
 
@@ -119,6 +125,7 @@ def main(word):
                     break
             if foundAllLetters:
                 print('Yes! The secret word is "' + secretWord + '"! You have won!')
+                player.updateScore()
                 gameIsDone = True
         else:
             missedLetters = missedLetters + guess
