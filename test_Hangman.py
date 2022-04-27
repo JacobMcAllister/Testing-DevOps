@@ -66,9 +66,9 @@ class TestHangman(unittest.TestCase):
         test = Hangman.getRandomWord(test_list)
         self.assertIn(test, test_list)
     
-    @patch('builtins.input', side_effect=['n', 'Jake','s', 'e', 'c', 'r', 't', 'n'])
-    def test_MainDriver(self, mock_input):
-        Hangman.main('secret')
+    #@patch('builtins.input', side_effect=['n', 'Jake','s', 'e', 'c', 'r', 't', 'n'])
+    #def test_MainDriver(self, mock_input):
+    #    Hangman.main('secret')
 
     def test_findPlayerDefault(self):
         test = Hangman.findPlayer("")
