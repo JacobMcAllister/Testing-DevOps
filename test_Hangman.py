@@ -89,20 +89,16 @@ class TestHangman(unittest.TestCase):
 
     def test_findPlayerExistFile(self):
         testFile = Path("." + "/" + "players" + "/" + "findPlayerCreateFile" + ".txt")
-        #testFile.touch(exist_ok=True)
 
-        with open(os.path.join("." + "/" + "players" + "/","findPlayerCreateFile" + ".txt"), 'w') as f:
-                f.writelines("findPlayerCreateFile"+"\n")
-                f.writelines("12\n")
-                f.close()
+        testPlayer = Hangman.findPlayer("findPlayerCreateFile")
 
         assert os.path.isfile(testFile)
 
         testPlayer = Hangman.findPlayer("findPlayerCreateFile")
 
         self.assertEqual(testPlayer.name, "findPlayerCreateFile")
-        self.assertEqual(testPlayer.score, 12)
-            
+        self.assertEqual(testPlayer.score, 0)
+        
     def test_updateScoreToClass(self):
         testFile = Path("." + "/" + "players" + "/" + "findPlayerCreateFile" + ".txt")
 
