@@ -89,6 +89,8 @@ class TestHangman(unittest.TestCase):
 
     def test_findPlayerExistFile(self):
         testFile = Path("." + "/" + "players" + "/" + "findPlayerCreateFile" + ".txt")
+        testFile.touch(exist_ok=True)
+
         with open(testFile, "r+") as f:
                 f.writelines("findPlayerCreateFile"+"\n")
                 f.writelines("12\n")
