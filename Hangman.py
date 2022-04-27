@@ -146,6 +146,7 @@ def main(word):
                 secretWord = getRandomWord(words)
             else:
                 break
+
 if __name__ == '__main__':
     secretWord = getRandomWord(words)
     main(secretWord)
