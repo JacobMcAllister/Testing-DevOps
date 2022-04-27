@@ -94,6 +94,7 @@ class TestHangman(unittest.TestCase):
         with open(testFile, "r+") as f:
                 f.writelines("findPlayerCreateFile"+"\n")
                 f.writelines("12\n")
+                f.close()
 
         assert os.path.isfile(testFile)
 
