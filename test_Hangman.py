@@ -92,8 +92,6 @@ class TestHangman(unittest.TestCase):
 
         testPlayer = Hangman.findPlayer("findPlayerCreateFile")
 
-        assert os.path.isfile(testFile)
-
         testPlayer = Hangman.findPlayer("findPlayerCreateFile")
 
         self.assertEqual(testPlayer.name, "findPlayerCreateFile")
