@@ -44,7 +44,7 @@ Make changes as you see fit then add, commit, and push.
 
 You can then nativegate to GitHub - Actions of the repository and see the workflow.
 
-Next we will look at the live deployment. I personally use docker playerground with your DOCKER login credentials 
+Next we will look at the live deployment (if the test pass) and see your changes. I personally use docker playerground with your DOCKER login credentials 
 
 [Docker Playground]https://labs.play-with-docker.com/
 
