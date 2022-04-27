@@ -107,7 +107,6 @@ def main(word):
     print("Enter player name")
     player = findPlayer(input())
     player.displayPlayer()
-    Player.listPlayers()
     while True:
         displayBoard(missedLetters, correctLetters, secretWord)
 
